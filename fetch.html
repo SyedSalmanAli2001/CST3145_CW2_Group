@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>fetch</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <div v-for="lesson in lessons">
+        <table>
+            <tr>
+            <td>
+            <ul>
+                <li>topic: {{lesson.topic}}</li>
+                <li>location: {{lesson.location}}</li>
+                <li>price: {{lesson.price}}</li>
+            </ul>
+            </td>
+            </tr>
+            <br>
+        </table>
+        </div>
+    </div>
+    <script>
+        let store = new Vue({
+            el: '#app',
+            data: { lessons: {}},
+            created: function(){
+                fetch('http://localhost:3000/lessons').then(
+                    function(response){
+                        response.json().then(
+                            function(json){
+                                store.lessons = json;
+                            }
+                        )
+                    }
+                )
+            }}
+        )
+    </script>
+</body>
+</html>
