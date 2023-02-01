@@ -1,0 +1,7 @@
+table {
+    border:solid rgb(6, 174, 168);
+    border-width: 2px;
+    display:inline-table;
+    width:25%;
+    height:50%;
+}
